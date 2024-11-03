@@ -1,0 +1,167 @@
+body { margin: 0;}
+ 
+ /* font settings */
+ h1, h2, h3, h4, h5, p {font-family: "Roboto", sans-serif; line-height: 108%;margin:0;}
+ h1, h2 {font-weight: 700; margin-bottom: 1rem;}
+ h3, h4 {font-weight: 500;}
+ h5, p {font-weight: 400;}
+ h1 {font-size: 36px;}
+ h2 {font-size: 26px;}
+ h3 {font-size: 20px;}
+ h4 {font-size: 18px;}
+ h5 {font-size: 18px;}
+ p, a {font-size: 16px;}
+ .p2 {font-size: 14px;}
+
+ a.boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    width: 100%;
+    height: 50px;
+    position:relative;
+    background: #6e625c3d;
+    text-transform:uppercase;
+    color:#6f2b06;
+    font-weight:700;
+    letter-spacing:1px;
+    border:none;
+    font-size:15px;
+    outline:none;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+  }
+  .buttonBox{
+    margin: 1rem auto 1rem;
+    position:relative;
+    max-width: 200px;
+    min-width: 150px;
+}
+.border{
+    position:absolute;
+    background:none;
+    transition:all .5s ease-in-out;
+}
+.buttonBox>.border:nth-of-type(1){
+    top:0;
+    left:50%;
+    width:0;
+    border-top:1px solid #6f2b06;
+    transition:width .5s ease-in-out, transform 1s ease-in-out;
+  }
+  
+  .buttonBox>.border:nth-of-type(2){
+    bottom:0;
+    left:50%;
+    width:0;
+    border-bottom:1px solid #6f2b06;
+    transition:width .5s ease-in-out, transform 1s ease-in-out;
+  }
+  
+  .buttonBox:hover .border{
+    transform:translate(-50%, 0);
+    width:100%;
+    transition:width .8s ease-in-out, transform .3s ease-in-out;
+  }
+  .buttonEliminar {
+    appearance: none;
+    background: white;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+    border-color: #6f2b06;
+    color: #6f2b06;
+  }
+
+  .show {
+    border: 1px solid #6f2b06; 
+    width: 800px; 
+    margin: 0 auto; 
+    border-radius: 8px; 
+    padding:1rem;
+    text-align: center;
+  }
+  .galeria.show img {
+     width:100%; height: auto;
+  }
+
+  /* otros settings */
+ .bg-banner {background-color :#f2f2f2;} 
+
+ .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; 
+    gap: 15px; 
+}
+ .bg-box2 {
+    grid-column: span 3;  
+    grid-row: span 1;
+ }
+ .bg-box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f4f5ff; 
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, .1); 
+    border-radius: 1rem; 
+    padding: 1rem; 
+    grid-column: span 1;  
+    grid-row: span 1;
+    text-align: center;
+}
+.bg-box3 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff; 
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, .1); 
+  border-radius: 1rem; 
+  padding: 0.5rem; 
+  grid-column: span 1;  
+  grid-row: span 1;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.bg-box img {width:100%; max-width: 340px; height: auto;margin-bottom: 1rem;}
+.bg-box h5 {margin-bottom: 0.5rem;}
+.bg-box p {margin-bottom: 0.5rem;}
+.pd-4 {padding-top: 1.5rem; padding-bottom: 1.5rem;}
+.bigBox {width:94%;margin: 0 auto;}
+.bigBox2 {width:94%;margin: 0 auto; display:flex;}
+ 
+
+ /* desktop */
+ /* ************* */
+ @media (min-width: 778px) {
+ /* font settings */
+ h1 {font-size: 46px;}
+ h2 {font-size: 36px;}
+ h3 {font-size: 26px;}
+ h4 {font-size: 20px;}
+ h5 {font-size: 20px;}
+ p {font-size: 18px;}
+
+ /* otros settings */
+ .container {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.5rem; 
+}
+ .pd-4 {padding-top: 2rem; padding-bottom: 2rem;}
+ .bigBox { max-width: 1200px; margin: 0 auto;}
+ .bigBox2 {max-width: 1200px; margin: 0 auto; display:flex;}
+ }
+
+ .store {position:relative;}
+ .flotante {position:relative; top:0; right: 0; padding: 1rem; background:#6f2b06; color:white; font-weight: 600; border-radius: 0.5rem;margin-top: -54px;}
+
+ @media (min-width: 1020px) {
+    /* otros settings */
+    .text-container {max-width:800px;margin:0 auto 16px;}
+    .container {
+       grid-template-columns: repeat(4, 1fr);
+    } 
+}
