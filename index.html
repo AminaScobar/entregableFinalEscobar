@@ -7,10 +7,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="./css/styleEntregableFinal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- JS -->
-    <script defer src="./js/scriptEntregableFinalUno.js" ></script>
-    <script defer src="./js/scriptEntregableFinalDos.js" ></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,38 +17,35 @@
 <body>
 
 
-    <section class="bg-banner pd-4">
+    <section class="bg-banner pd-16">
       <div class="bigBox"> 
-        <h1>¡Mecánica de Precisión para Tu Auto, Rápido y Confiable!</h1>
-        <p>Especialistas en diagnóstico, reparación y mantenimiento de todo tipo de vehículos. Nuestro equipo altamente capacitado te asegura resultados rápidos y duraderos, para que vuelvas a la carretera sin preocupaciones.</p>
+        <h1 class="txt-center">¡Mecánica de Precisión para Tu Auto, Rápido y Confiable!</h1>
+        <p class="txt-center">Especialistas en diagnóstico, reparación y mantenimiento de todo tipo de vehículos. Nuestro equipo altamente capacitado te asegura resultados rápidos y duraderos, para que vuelvas a la carretera sin preocupaciones.</p>
       </div>  
     </section>
+
+    <div id="notificacion" >
+      <h3>El servicio ha sido agregado a su cotizador</h3>
+    </div>
 
   <div class="store pd-4" >
     <section class="pd-4">
       <div class="bigBox">
 
        <div class="container">  
-        <article class="bg-box2">
+        <article class="bg-box2 ">
            <div id="contenedorServicios" class="container">
            </div> 
-        </article>
-        <article class="pd-4 bg-box " >
-          <section class=""  id="totalCotizador">
-          </section>
-          <div class="" id="contenedorCotizador">
-          </div>
+           <div class="pd-4">
+             <a id="botonCotizador" class=" boton irCotizador" href="./paginas/cotizador.html">Ir al Cotizador</a> 
+           </div>
         </article>
        </div>
 
       </div>    
     </section>
-
-    
-
-
   </div>
-  <div class="bigBox pd-4">
+  <div class="bigBox pd-4 satisfaccion">
     <div class="pd-4 text-container">
       <h3>Nuestros Clientes Satisfechos</h3>
       <p>Conozca algunos de nuestros clientes que luego de nuestra intervención han quedado satisfechos con el servición que nuestra empresa les ha proporcionado.</p>
@@ -63,7 +56,11 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </section>
-  </div>  
+  </div>
+  
+  <script defer src="./js/scriptEntregableFinalUno.js" ></script>
+  <script defer src="/js/scriptEntregableFinalDos.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>  
 </body>
 
 </html>

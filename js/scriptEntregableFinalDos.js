@@ -1,85 +1,65 @@
-
-
-const contenedorServicios = document.getElementById("contenedorServicios");
 const contenedorCotizador = document.getElementById("contenedorCotizador");
 const totalCotizador = document.getElementById("totalCotizador");
-const cotizador = [];
+const cotizador = JSON.parse(localStorage.getItem("cotizador")) || [];
 
-const agregarCotizador =(id)=> {
-    const servicioAgregado = servicios.find(servicio=>servicio.id===id)
-    
-    if(cotizador.some(servicio=>servicio.id===id)) {
-        const indexServicio = cotizador.findIndex(servicio=>servicio.id===id)
-        cotizador[indexServicio].cantidad++ 
-    } else {
-        cotizador.push(servicioAgregado)
-    }
-}
 
-const elinimarServicio =(id)=> {
-    const servicioEliminado = cotizador.find(servicio=>servicio.id===id)
-    const indexServicio = cotizador.indexOf(servicioEliminado)
+const actualizarCotizador = () => {
+  contenedorCotizador.innerHTML = "";
 
-    cotizador.splice(indexServicio, 1)
-}
+  if (cotizador.length === 0) {
+    contenedorCotizador.innerHTML = `<p>El cotizador está vacío</p>`;
+    totalCotizador.innerHTML = "";
+    return;
+  }
 
-const actualizarCotizador =()=> {
-
-    contenedorCotizador.innerHTML ="";
-
-    cotizador.forEach((servicio)=> {
-        const cotizadorDiv = document.createElement('div');
-        cotizadorDiv.classList.add("bg-box3");
-        cotizadorDiv.innerHTML = `
-        <p class="p2"> <strong>${servicio.servicio}</strong></p>
-        <p class="p2">Precio unitario: $${servicio.precio}</p>
-        <p>cantidad: <strong>${servicio.cantidad}</strong></p>
-        <button class="buttonEliminar" id="eliminar${servicio.id}"> Eliminar de la cotización</button> 
-    `; 
-    contenedorCotizador.appendChild(cotizadorDiv)
-
-    const eliminarBoton = document.getElementById(`eliminar${servicio.id}`) 
-    eliminarBoton.addEventListener('click', function () {
-        elinimarServicio(servicio.id);
-        actualizarCotizador();
-    })
-  })
+  cotizador.forEach((elm) => {
+    const cotizadorDiv = document.createElement("div");
+    cotizadorDiv.classList.add("bg-box3");
+    cotizadorDiv.innerHTML = `
+      <p class="p2 m-p"><strong>${elm.servicio}</strong></p>
+      <p class="p2 mb-p">Precio unitario: $${elm.precio}</p>
+      <p class="mb-p">Cantidad: <strong id="cantidad-${elm.id}" class="h3">${elm.cantidad}</strong></p>
+      <button class="buttonEliminar mb-p" data-id="${elm.id}">Eliminar de la cotización</button>`;
+    contenedorCotizador.appendChild(cotizadorDiv);
+  });
 
   totalCotizador.innerHTML = `
-  <div class="flotante">
-     <h4>Total $${cotizador.reduce((acc,servicio)=> acc + (servicio.precio*servicio.cantidad), 0)}</h4>
-  </div>
-`; 
-  
-}
+    <div class="flotante">
+      <h4>Total: $${cotizador.reduce((acc, elm) => acc + elm.precio * elm.cantidad, 0)}</h4>
+    </div>
+  `;
+};
 
-// 
-servicios.forEach((servicio)=> {
-    
-    //Crear elemento html
-    const servicioDiv = document.createElement('div');
-    servicioDiv.classList.add("bg-box");
-    servicioDiv.innerHTML = `
-        <img src="${servicio.imagen}" alt="${servicio.servicio}" >
-        <h5>${servicio.servicio}</h5>
-        <p>Precio: $${servicio.precio}</p>
-        <h4 class="total${servicio.id}"></h4>
-        <div class="buttonBox">
-          <a id="agregar${servicio.id}" class="boton">Agregar a la cotización</a>
-          <div class="border"></div>
-          <div class="border"></div>
-        </div>
-      </div>
-    `;
-    contenedorServicios.appendChild(servicioDiv);
+const eliminarServicio = (id) => {
 
-    //agregar a cotizador
-    const botonAgregar = document.getElementById(`agregar${servicio.id}`);
-    botonAgregar.addEventListener('click', function () {
-            agregarCotizador(servicio.id);
-            actualizarCotizador();
-        });
+    const index = cotizador.findIndex((servicio) => servicio.id === id);
+    if (index !== -1) {
+      cotizador.splice(index, 1); 
+      localStorage.setItem("cotizador", JSON.stringify(cotizador)); 
+      actualizarCotizador(); 
+    } else {
+      console.error(`No se encontró el servicio con id ${id}`);
+    }
+  };
 
+contenedorCotizador.addEventListener("click", (event) => {
+  if (event.target.classList.contains("buttonEliminar")) {
+    const id = event.target.dataset.id;
+    eliminarServicio(id);
+  }
 });
 
-// Carrito
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarCotizador();
+  });
+
+  /******  formulario  *****/
+
+  const form = document.getElementById('contactForm');
+  const thankYouMessage = document.getElementById('thankYouMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    form.style.display = 'none'; 
+    thankYouMessage.style.display = 'block'; 
+  });
